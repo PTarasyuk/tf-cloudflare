@@ -12,7 +12,5 @@ And you will need to generate an API Token by following the link to the [R2 API 
 ### `jq`
 
 `jq` is a command-line JSON processor, allowing data parsing and manipulation.
-
 Install via Homebrew using: `brew install jq`.
-
 Ideal for scripting and API data handling.
