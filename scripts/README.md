@@ -15,8 +15,6 @@ And you will need to generate an API Token by following the link to the [R2 API 
 
 Install via Homebrew using: `brew install jq`.
 
-Ideal for scripting and API data handling.
-
 ## Using `tf-backend-mgmt.sh`
 
 Script to manage Cloudflare R2 buckets for Terraform Backend.
