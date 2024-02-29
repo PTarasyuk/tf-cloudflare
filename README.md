@@ -1,6 +1,9 @@
 # TF-Cloudflare
 
-Example of Terraform module for working with Cloudflare
+Example of Terraform module for working with Cloudflare.
+
+In this example, Terraform stores state data in a Cloudflare R2 bucket to track the resources it manages.
+Also configures the deployment to Cloudflare Pages of a static site based on MkDocs.
 
 ## Prerequisites
 
