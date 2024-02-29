@@ -1,5 +1,8 @@
 #!/bin/bash
 
+script_path=$(readlink -f "$0")
+script_dir=$(dirname "$script_path")
+
 CF_API_TOKEN=""
 CF_ACCOUNT_ID=""
 CF_RESPONSE=""
@@ -15,8 +18,11 @@ help() {
   echo "  -a, --account <YOUR_ACCOUNT_ID>  Your Cloudflare Account ID"
   echo "  -C <YOUR_BUCKET_NAME>            Create Bucket with <YOUR_BUCKET_NAME> name"
   echo "  -c, --create                     Create Bucket with name defined in environment variables"
+  echo "  -G <YOUR_BUCKET_NAME>            View Bucket with <YOUR_BUCKET_NAME> name"
+  echo "  -g, --get                        View Bucket with name defined in environment variables"
   echo "  -D <YOUR_BUCKET_NAME>            Delete Bucket with <YOUR_BUCKET_NAME> name"
   echo "  -d, --delete                     Delete Bucket with name defined in environment variables"
+  echo "  -l, --list                       List buckets"
   echo "  -e, --env                        Use environment variables"
   echo "  -h, --help                       Display this help"
   echo ""
@@ -38,6 +44,7 @@ fi
 LOAD_FROM_ENV=false
 LIST_ALL_BUCKETS=false
 CREATE_BUCKET=false
+GET_BUCKET=false
 DELETE_BUCKET=false
 
 while [ "$1" != "" ]; do
@@ -68,6 +75,15 @@ while [ "$1" != "" ]; do
       CREATE_BUCKET=true
       LOAD_FROM_ENV=true
       ;;
+    -G )
+      shift
+      GET_BUCKET=true
+      CF_BUCKET_NAME=$1
+      ;;
+    -g | --get )
+      GET_BUCKET=true
+      LOAD_FROM_ENV=true
+      ;;
     -D )
       shift
       DELETE_BUCKET=true
@@ -87,9 +103,9 @@ done
 
 if [ LOAD_FROM_ENV ]; then
   if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ACCOUNT_ID" ] || [ -z "$CF_BUCKET_NAME" ]; then
-    if [ -f ".env" ]; then
+    if [ -f "$script_dir/.env" ]; then
       echo "Loading environment variavles from .env file..."
-      source .env
+      source "$script_dir/.env"
     fi
     if [ -z "$CF_API_TOKEN" ] && [ ! -z "$ENV_CF_API_TOKEN" ]; then
       CF_API_TOKEN=$ENV_CF_API_TOKEN
@@ -117,6 +133,16 @@ if [ $CREATE_BUCKET == true ]; then
       --header "Authorization: Bearer $CF_API_TOKEN" \
       --header "Content-Type: application/json" \
       --data '{"name": "'$CF_BUCKET_NAME'"}')
+  fi
+fi
+
+if [ $GET_BUCKET == true ]; then
+  if [[ $CF_BUCKETS == *"$CF_BUCKET_NAME"* ]]; then
+    CF_RESPONSE=$(curl --request GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/r2/buckets/$CF_BUCKET_NAME" \
+      --header "Authorization: Bearer $CF_API_TOKEN" \
+      --header "Content-Type: application/json")
+    echo ""
+    echo $CF_RESPONSE
   fi
 fi
 

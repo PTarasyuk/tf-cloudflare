@@ -1,0 +1,5 @@
+bucket     = "terraform"
+key        = "Your-Project-Name/terraform.tfstate"
+endpoints  = { s3 = "https://Your-Cloudflare-Account-ID.r2.cloudflarestorage.com" }
+access_key = "Your-Cloudflare-Access-Key"
+secret_key = "Your-Cloudflare-Secret-Key"

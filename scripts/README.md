@@ -16,3 +16,25 @@ And you will need to generate an API Token by following the link to the [R2 API 
 Install via Homebrew using: `brew install jq`.
 
 Ideal for scripting and API data handling.
+
+## Using `tf-backend-mgmt.sh`
+
+Script to manage Cloudflare R2 buckets for Terraform Backend.
+
+Usage: 
+
+```shell
+tf-backend-mgmt.sh -t YOUR_API_TOKEN -a YOUR_ACCOUNT_ID
+```
+
+- `-t, --token <YOUR_API_TOKEN>` - Your Cloudflare API Token
+- `-a, --account <YOUR_ACCOUNT_ID>` - Your Cloudflare Account ID
+- `-C <YOUR_BUCKET_NAME>` - Create Bucket with `<YOUR_BUCKET_NAME>` name
+- `-c, --create` - Create Bucket with name defined in environment variables
+- `-G <YOUR_BUCKET_NAME>` - View Bucket with `<YOUR_BUCKET_NAME>` name
+- `-g, --get` - View Bucket with name defined in environment variables
+- `-D <YOUR_BUCKET_NAME>` - Delete Bucket with `<YOUR_BUCKET_NAME>` name
+- `-d, --delete` - Delete Bucket with name defined in environment variables
+- `-l, --list` - List buckets
+- `-e, --env` - Use environment variables
+- `-h, --help` - Display this help

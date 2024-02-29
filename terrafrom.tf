@@ -7,17 +7,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "terraform"
-    key    = "kindergrow/terraform.tfstate"
-    endpoints = { s3 = "https://xxxxx.r2.cloudflarestorage.com" }
-    region = "auto"
-
-    access_key = "xxxx"
-    secret_key = "xxxxx"
+    region                      = "auto"
     skip_credentials_validation = true
-    skip_region_validation = true
+    skip_region_validation      = true
     skip_requesting_account_id  = true
     skip_metadata_api_check     = true
-    skip_s3_checksum = true
+    skip_s3_checksum            = true
   }
 }

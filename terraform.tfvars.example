@@ -1,0 +1,3 @@
+email      = "Your@Email"
+api_key    = "Your-Cloudflare-Global-Api-Key"
+account_id = "Your-Cloudflare-Account-ID"
