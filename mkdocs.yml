@@ -1,0 +1,14 @@
+site_name: TF-Cloudflare Docs
+
+theme:
+  name: material
+
+markdown_extensions:
+  - markdown_include.include:
+      base_path: docs
+  - toc:
+      toc_depth: 3
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+

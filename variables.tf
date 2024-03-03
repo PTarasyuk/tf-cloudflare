@@ -23,38 +23,38 @@ variable "project_name" {
 }
 
 variable "production_branch" {
-  type    = string
+  type        = string
   description = "Project production branch name."
-  default = "main"
+  default     = "main"
 }
 
 # Configuration for the project build process.
 
 variable "build_command" {
   # More see: https://developers.cloudflare.com/pages/configuration/build-configuration/
-  type    = string
+  type        = string
   description = "Command used to build project."
-  default = "mkdocs build"
+  default     = "mkdocs build"
 }
 
 variable "destination_dir" {
-  type    = string
+  type        = string
   description = "Output directory of the build."
-  default = "site"
+  default     = "site"
 }
 
 variable "root_dir" {
-  type    = string
+  type        = string
   description = "Your project's root directory, where Cloudflare runs the build command."
-  default = ""
+  default     = ""
 }
 
 # Configuration for the project source.
 
 variable "source_type" {
-  type    = string
+  type        = string
   description = "Project host type. (github or gitlab)"
-  default = "github"
+  default     = "github"
 }
 
 variable "source_owner" {

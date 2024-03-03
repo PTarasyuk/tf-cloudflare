@@ -1,0 +1,40 @@
+formatter: markdown table
+
+sections:
+  show:
+    - header
+    - inputs
+    - outputs
+    - providers
+    - resources
+    - modules
+    - footer
+
+output:
+  file: README.md
+  mode: inject
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+recursive:
+  enabled: false
+
+settings:
+  anchor: true
+  color: true
+  default: true
+  description: true
+  escape: true
+  hide-empty: true
+  html: true
+  indent: 3
+  lockfile: true
+  required: true
+  sensitive: true
+  type: true

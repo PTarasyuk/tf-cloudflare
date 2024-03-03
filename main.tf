@@ -4,7 +4,7 @@ provider "cloudflare" {
 }
 
 # Provides a resource which manages Cloudflare Pages projects.
-resource "cloudflare_pages_project" "basic_project" {
+resource "cloudflare_pages_project" "this" {
   account_id        = var.account_id
   name              = var.project_name
   production_branch = var.production_branch
@@ -30,7 +30,7 @@ resource "cloudflare_pages_project" "basic_project" {
 }
 
 resource "null_resource" "deploy_trigger" {
-  depends_on = [cloudflare_pages_project.basic_project]
+  depends_on = [cloudflare_pages_project.this]
 
   provisioner "local-exec" {
     command = "curl -X POST 'https://api.cloudflare.com/client/v4/accounts/${var.account_id}/pages/projects/${var.project_name}/deployments' -H 'X-Auth-Email: ${var.email}' -H 'X-Auth-Key: ${var.api_key}' -H 'Content-Type: application/json'"

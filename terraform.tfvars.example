@@ -1,7 +1,7 @@
 email      = "Your@Email"
-api_key    = "Your-Cloudflare-Global-Api-Key"
-account_id = "Your-Cloudflare-Account-ID"
+api_key    = "Your_Cloudflare_Global_Api_Key"
+account_id = "Your_Cloudflare_Account_ID"
 
-project_name = "Your-Project-Name"
-source_owner = "Your-Source-Owner"
-source_repo  = "Your-Source-Repo"
+project_name = "Your_Project_Name"
+source_owner = "Your_Source_Owner"
+source_repo  = "Your_Source_Repo"
